@@ -6,7 +6,7 @@ import { getAudioFileUrl, useChangeAllSound, usePlayAudio, useWatchAllSound } fr
 import { getShortcutKey, useDisableEventListener, useEventListener } from "@/hooks/event.ts";
 import { $computed, $ref } from "vue/macros";
 import { cloneDeep } from "lodash-es";
-import { DefaultShortcutKeyMap, Dict, DictType, ShortcutKey } from "@/types.ts";
+import { getDefaultShortcutKeyMap, Dict, DictType, ShortcutKey } from "@/types.ts";
 import BaseButton from "@/components/BaseButton.vue";
 import { APP_NAME, EXPORT_DATA_KEY, SAVE_DICT_KEY, SAVE_SETTING_KEY, SoundFileOptions } from "@/utils/const.ts";
 import VolumeIcon from "@/components/icon/VolumeIcon.vue";
@@ -49,7 +49,7 @@ useEventListener('keydown', (e: KeyboardEvent) => {
   // console.log('key', shortcutKey)
 
   // if (shortcutKey[shortcutKey.length-1] === '+') {
-  //   settingStore.shortcutKeyMap[editShortcutKey] = DefaultShortcutKeyMap[editShortcutKey]
+  //   settingStore.shortcutKeyMap[editShortcutKey] = getDefaultShortcutKeyMap()[editShortcutKey]
   //   return ElMessage.warning('设备失败！')
   // }
 
@@ -59,7 +59,7 @@ useEventListener('keydown', (e: KeyboardEvent) => {
     } else {
       for (const [k, v] of Object.entries(settingStore.shortcutKeyMap)) {
         if (v === shortcutKey && k !== editShortcutKey) {
-          settingStore.shortcutKeyMap[editShortcutKey] = DefaultShortcutKeyMap[editShortcutKey]
+          settingStore.shortcutKeyMap[editShortcutKey] = getDefaultShortcutKeyMap()[editShortcutKey]
           return ElMessage.warning('快捷键重复！')
         }
       }
@@ -70,7 +70,7 @@ useEventListener('keydown', (e: KeyboardEvent) => {
 
 function resetShortcutKeyMap() {
   editShortcutKey = ''
-  settingStore.shortcutKeyMap = cloneDeep(DefaultShortcutKeyMap)
+  settingStore.shortcutKeyMap = cloneDeep(getDefaultShortcutKeyMap())
   ElMessage.success('恢复成功')
 }
 

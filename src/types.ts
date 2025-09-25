@@ -164,27 +164,35 @@ export enum ShortcutKey {
   TogglePanel = 'TogglePanel'
 }
 
-export const DefaultShortcutKeyMap = {
-  [ShortcutKey.EditArticle]: 'Ctrl+E',
-  [ShortcutKey.ShowWord]: 'Escape',
-  [ShortcutKey.Previous]: 'Alt+⬅',
-  [ShortcutKey.Next]: 'Tab',
-  [ShortcutKey.ToggleSimple]: '`',
-  [ShortcutKey.ToggleCollect]: 'Enter',
-  [ShortcutKey.PreviousChapter]: 'Ctrl+⬅',
-  [ShortcutKey.NextChapter]: 'Ctrl+➡',
-  [ShortcutKey.RepeatChapter]: 'Ctrl+Enter',
-  [ShortcutKey.DictationChapter]: 'Alt+Enter',
-  [ShortcutKey.PlayWordPronunciation]: 'Ctrl+P',
-  // [ShortcutKey.PlayTranslatePronunciation]: 'Ctrl+O',
-  [ShortcutKey.ToggleShowTranslate]: 'Ctrl+Z',
-  [ShortcutKey.ToggleDictation]: 'Ctrl+I',
-  [ShortcutKey.OpenSetting]: 'Ctrl+S',
-  [ShortcutKey.ToggleTheme]: 'Ctrl+Q',
-  [ShortcutKey.OpenDictDetail]: 'Ctrl+J',
-  [ShortcutKey.ToggleConciseMode]: 'Ctrl+M',
-  [ShortcutKey.TogglePanel]: 'Ctrl+L',
+// 根据操作系统生成快捷键映射
+export function getDefaultShortcutKeyMap() {
+  const isMac = /Mac|iPod|iPhone|iPad/.test(navigator.platform)
+  const cmdOrCtrl = isMac ? 'Cmd' : 'Ctrl'
+  
+  return {
+    [ShortcutKey.EditArticle]: `${cmdOrCtrl}+E`,
+    [ShortcutKey.ShowWord]: 'Escape',
+    [ShortcutKey.Previous]: 'Alt+⬅',
+    [ShortcutKey.Next]: 'Tab',
+    [ShortcutKey.ToggleSimple]: '`',
+    [ShortcutKey.ToggleCollect]: 'Enter',
+    [ShortcutKey.PreviousChapter]: `${cmdOrCtrl}+⬅`,
+    [ShortcutKey.NextChapter]: `${cmdOrCtrl}+➡`,
+    [ShortcutKey.RepeatChapter]: `${cmdOrCtrl}+Enter`,
+    [ShortcutKey.DictationChapter]: 'Alt+Enter',
+    [ShortcutKey.PlayWordPronunciation]: `${cmdOrCtrl}+P`,
+    // [ShortcutKey.PlayTranslatePronunciation]: `${cmdOrCtrl}+O`,
+    [ShortcutKey.ToggleShowTranslate]: `${cmdOrCtrl}+Z`,
+    [ShortcutKey.ToggleDictation]: `${cmdOrCtrl}+I`,
+    [ShortcutKey.OpenSetting]: `${cmdOrCtrl}+S`,
+    [ShortcutKey.ToggleTheme]: `${cmdOrCtrl}+Q`,
+    [ShortcutKey.OpenDictDetail]: `${cmdOrCtrl}+J`,
+    [ShortcutKey.ToggleConciseMode]: `${cmdOrCtrl}+M`,
+    [ShortcutKey.TogglePanel]: `${cmdOrCtrl}+L`,
+  }
 }
+
+export const DefaultShortcutKeyMap = getDefaultShortcutKeyMap()
 
 
 export enum TranslateEngine {

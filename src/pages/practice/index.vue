@@ -34,7 +34,12 @@ watch(practiceStore, () => {
   if (practiceStore.wrongWordNumber > practiceStore.inputWordNumber) {
     return practiceStore.correctRate = 0
   }
-  practiceStore.correctRate = 100 - Math.trunc(((practiceStore.wrongWordNumber) / (practiceStore.inputWordNumber)) * 100)
+  
+  // 修复：使用 Math.round 替代 Math.trunc 以获得更准确的结果
+  const errorRate = practiceStore.wrongWordNumber / practiceStore.inputWordNumber
+  const correctRate = Math.round((1 - errorRate) * 100)
+  
+  practiceStore.correctRate = correctRate
 })
 
 

@@ -1,6 +1,6 @@
 import { defineStore } from "pinia"
 import { cloneDeep, merge } from "lodash-es";
-import { DefaultShortcutKeyMap } from "@/types.ts";
+import { getDefaultShortcutKeyMap } from "@/types.ts";
 import { SAVE_SETTING_KEY } from "@/utils/const.ts";
 import { checkAndUpgradeSaveDict, checkAndUpgradeSaveSetting } from "@/utils";
 
@@ -82,7 +82,7 @@ export const DefaultSettingState = (): SettingState => ({
   theme: 'auto',
   collapse: false,
   chapterWordNumber: DefaultChapterWordNumber,
-  shortcutKeyMap: cloneDeep(DefaultShortcutKeyMap),
+  shortcutKeyMap: cloneDeep(getDefaultShortcutKeyMap()),
   first: true,
   load: false
 })

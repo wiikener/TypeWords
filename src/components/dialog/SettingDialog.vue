@@ -7,7 +7,7 @@ import {getAudioFileUrl, useChangeAllSound, usePlayAudio, useWatchAllSound} from
 import {getShortcutKey, useDisableEventListener, useEventListener} from "@/hooks/event.ts";
 import {$computed, $ref} from "vue/macros";
 import {cloneDeep} from "lodash-es";
-import {DefaultShortcutKeyMap, ShortcutKey} from "@/types.ts";
+import {getDefaultShortcutKeyMap, ShortcutKey} from "@/types.ts";
 import BaseButton from "@/components/BaseButton.vue";
 import {SoundFileOptions} from "@/utils/const.ts";
 import VolumeIcon from "@/components/icon/VolumeIcon.vue";

@@ -20,10 +20,19 @@ export function useEventListener(type: string, listener: EventListenerOrEventLis
 
 export function getShortcutKey(e: KeyboardEvent) {
     let shortcutKey = ''
-    if (e.ctrlKey) shortcutKey += 'Ctrl+'
+    
+    // macOS 兼容性：检查 Meta 键（Cmd）和 Ctrl 键
+    const isMac = /Mac|iPod|iPhone|iPad/.test(navigator.platform)
+    const cmdOrCtrl = isMac ? e.metaKey : e.ctrlKey
+    
+    if (cmdOrCtrl) {
+        shortcutKey += isMac ? 'Cmd+' : 'Ctrl+'
+    }
     if (e.altKey) shortcutKey += 'Alt+'
     if (e.shiftKey) shortcutKey += 'Shift+'
-    if (e.key !== 'Control' && e.key !== 'Alt' && e.key !== 'Shift') {
+    
+    // 跳过修饰键本身
+    if (e.key !== 'Control' && e.key !== 'Alt' && e.key !== 'Shift' && e.key !== 'Meta') {
         if (e.keyCode >= 65 && e.keyCode <= 90) {
             shortcutKey += e.key.toUpperCase()
         } else {
@@ -42,16 +51,44 @@ export function getShortcutKey(e: KeyboardEvent) {
     }
     shortcutKey = shortcutKey.trim()
 
-    // console.log('key', shortcutKey)
+    // console.log('🔑 Shortcut key detected:', shortcutKey)
     return shortcutKey
 }
 
 export function useStartKeyboardEventListener() {
     const runtimeStore = useRuntimeStore()
     const settingStore = useSettingStore()
+    
+    // 检测是否为 Edge 浏览器
+    const isEdge = /Edg\//.test(navigator.userAgent)
+    console.log('🔍 Browser detection - Is Edge:', isEdge, 'UserAgent:', navigator.userAgent)
+
+    // Edge 浏览器兼容性修复 - 使用 keypress 事件作为主要监听器
+    if (isEdge) {
+        useEventListener('keypress', (e: KeyboardEvent) => {
+            console.log('Edge keypress:', {key: e.key, keyCode: e.keyCode, code: e.code})
+            if (!runtimeStore.disableEventListener && e.key.length === 1) {
+                // 对于字母按键，直接触发输入事件
+                if (/^[a-zA-Z]$/.test(e.key)) {
+                    console.log('Edge: Letter key detected, triggering onTyping')
+                    emitter.emit(EventKey.onTyping, e)
+                    return
+                }
+            }
+        })
+    }
+
+    // 备用事件监听器 - 适用于所有浏览器
+    useEventListener('keypress', (e: KeyboardEvent) => {
+        console.log('Global keypress (backup):', {key: e.key, keyCode: e.keyCode, code: e.code})
+        if (!runtimeStore.disableEventListener && e.key.length === 1 && !isEdge) {
+            console.log('Backup keypress handler triggered')
+            emitter.emit(EventKey.onTyping, e)
+        }
+    })
 
     useEventListener('keydown', (e: KeyboardEvent) => {
-        // console.log('e',e.keyCode,e.code)
+        console.log('Global keydown:', {key: e.key, keyCode: e.keyCode, code: e.code, disableEventListener: runtimeStore.disableEventListener})
         if (!runtimeStore.disableEventListener) {
             e.preventDefault()
             let shortcutKey = getShortcutKey(e)
@@ -71,6 +108,13 @@ export function useStartKeyboardEventListener() {
                 emitter.emit(shortcutEvent, e)
             } else {
                 //非英文模式下，输入区域的 keyCode 均为 229时，
+                // Edge 浏览器跳过字母按键的 keydown 处理，因为已经在 keypress 中处理了
+                const isLetterKey = e.keyCode >= 65 && e.keyCode <= 90
+                if (isEdge && isLetterKey) {
+                    console.log('Edge: Skipping letter key in keydown handler')
+                    return
+                }
+                
                 if ((e.keyCode >= 65 && e.keyCode <= 90)
                     || (e.keyCode >= 48 && e.keyCode <= 57)
                     || e.code === 'Space'
