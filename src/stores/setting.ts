@@ -1,6 +1,6 @@
 import { defineStore } from "pinia"
 import { cloneDeep, merge } from "lodash-es";
-import { getDefaultShortcutKeyMap } from "@/types.ts";
+import { getDefaultShortcutKeyMap, DictationMode } from "@/types.ts";
 import { SAVE_SETTING_KEY } from "@/utils/const.ts";
 import { checkAndUpgradeSaveDict, checkAndUpgradeSaveSetting } from "@/utils";
 
@@ -22,7 +22,7 @@ export interface SettingState {
   effectSoundVolume: number,
   repeatCount: number,
   repeatCustomCount?: number,
-  dictation: boolean,
+  dictation: DictationMode,
   translate: boolean,
   showNearWord: boolean
   ignoreCase: boolean
@@ -64,7 +64,7 @@ export const DefaultSettingState = (): SettingState => ({
   effectSoundVolume: 100,
   repeatCount: 1,
   repeatCustomCount: null,
-  dictation: false,
+  dictation: DictationMode.None,
   translate: true,
 
   showNearWord: true,

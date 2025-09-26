@@ -11,11 +11,12 @@ import {watch} from "vue"
 import VolumeSetting from "@/components/toolbar/VolumeSetting.vue";
 import RepeatSetting from "@/components/toolbar/RepeatSetting.vue";
 import TranslateSetting from "@/components/toolbar/TranslateSetting.vue";
+import DictationSetting from "@/components/toolbar/DictationSetting.vue";
 import {useSettingStore} from "@/stores/setting.ts";
 import {usePracticeStore} from "@/stores/practice.ts";
 import {useRuntimeStore} from "@/stores/runtime.ts";
 import {$ref} from "vue/macros";
-import {DictType, ShortcutKey} from "@/types.ts";
+import {DictType, ShortcutKey, DictationMode} from "@/types.ts";
 import ChapterName from "@/components/toolbar/ChapterName.vue";
 import {emitter, EventKey} from "@/utils/eventBus.ts";
 import BaseIcon from "@/components/BaseIcon.vue";
@@ -85,18 +86,7 @@ watch(() => store.load, n => {
             </IconWrapper>
           </Tooltip>
 
-          <Tooltip
-              :title="`开关默写模式(快捷键：${settingStore.shortcutKeyMap[ShortcutKey.ToggleDictation]})`"
-          >
-            <IconWrapper>
-              <Icon icon="majesticons:eye-off-line"
-                    v-if="settingStore.dictation"
-                    @click="settingStore.dictation = false"/>
-              <Icon icon="mdi:eye-outline"
-                    v-else
-                    @click="settingStore.dictation = true"/>
-            </IconWrapper>
-          </Tooltip>
+          <DictationSetting />
 
           <TranslateSetting/>
 

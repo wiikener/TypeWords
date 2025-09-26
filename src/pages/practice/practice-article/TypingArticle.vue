@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {computed, nextTick, onMounted, onUnmounted, watch} from "vue"
 import {$computed, $ref} from "vue/macros";
-import {Article, ArticleWord, DefaultArticle, ShortcutKey, ShortcutKeyMap, Word} from "@/types.ts";
+import {Article, ArticleWord, DefaultArticle, ShortcutKey, ShortcutKeyMap, Word, DictationMode} from "@/types.ts";
 import {useBaseStore} from "@/stores/base.ts";
 import {usePracticeStore} from "@/stores/practice.ts";
 import {useSettingStore} from "@/stores/setting.ts";
@@ -110,7 +110,7 @@ function nextSentence() {
       emit('over')
     }
   } else {
-    if (settingStore.dictation) {
+    if (settingStore.dictation !== DictationMode.None) {
       calcTranslateLocation()
     }
     playWordAudio(currentSection[sentenceIndex].text)
@@ -144,7 +144,7 @@ function onTyping(e: KeyboardEvent) {
           console.log('打完了')
         }
       } else {
-        if (settingStore.dictation) {
+        if (settingStore.dictation !== DictationMode.None) {
           calcTranslateLocation()
         }
         playWordAudio(currentSection[sentenceIndex].text)
@@ -302,7 +302,7 @@ function otherWord(word: ArticleWord, i: number, i2: number, i3: number) {
 
   //剩100是因为，可能存在特殊情况，比如003,010这种，0 12 24，100
   if (sectionIndex * 10000 + sentenceIndex * 100 + wordIndex < i * 10000 + i2 * 100 + i3
-      && settingStore.dictation
+      && settingStore.dictation !== DictationMode.None
   ) {
     return str.split('').map(v => '_').join('')
   }
@@ -377,7 +377,7 @@ defineExpose({showSentence, play, del,hideSentence,nextSentence})
              v-for="(section,indexI) in props.article.sections">
                 <span class="sentence"
                       :class="[
-                          sectionIndex === indexI && sentenceIndex === indexJ && settingStore.dictation
+                          sectionIndex === indexI && sentenceIndex === indexJ && settingStore.dictation !== DictationMode.None
                           ?'dictation':''
                       ]"
                       @mouseenter="settingStore.allowWordTip && showSentence(indexI,indexJ)"
@@ -413,10 +413,10 @@ defineExpose({showSentence, play, del,hideSentence,nextSentence})
                             `${indexI}${indexJ}${indexW}`,
                             (`${indexI}${indexJ}${indexW}` === currentIndex && isSpace && wrong) && 'bg-wrong',
                             (`${indexI}${indexJ}${indexW}` === currentIndex && isSpace && !wrong) && 'bottom-border',
-                            (`${indexI}${indexJ}${indexW}` === currentIndex && isSpace && !wrong && settingStore.dictation) && 'word-space',
+                            (`${indexI}${indexJ}${indexW}` === currentIndex && isSpace && !wrong && settingStore.dictation !== DictationMode.None) && 'word-space',
                         ]">
                       {{
-                        (`${indexI}${indexJ}${indexW}` === currentIndex && isSpace && settingStore.dictation) ? '_' : ' '
+                        (`${indexI}${indexJ}${indexW}` === currentIndex && isSpace && settingStore.dictation !== DictationMode.None) ? '_' : ' '
                       }}
                     </span>
                   </span>

@@ -13,7 +13,7 @@ import {useRuntimeStore} from "@/stores/runtime.ts";
 import {MessageBox} from "@/utils/MessageBox.tsx";
 import PracticeArticle from "@/pages/practice/practice-article/index.vue";
 import PracticeWord from "@/pages/practice/practice-word/index.vue";
-import {ShortcutKey} from "@/types.ts";
+import {ShortcutKey, DictationMode} from "@/types.ts";
 import DictModal from "@/components/dialog/DictDiglog.vue";
 import {useStartKeyboardEventListener} from "@/hooks/event.ts";
 import useTheme from "@/hooks/theme.ts";
@@ -57,7 +57,7 @@ function test() {
 
 function write() {
   // console.log('write')
-  settingStore.dictation = true
+  settingStore.dictation = DictationMode.Full
   repeat()
 }
 
@@ -83,7 +83,7 @@ function toggleShowTranslate() {
 }
 
 function toggleDictation() {
-  settingStore.dictation = !settingStore.dictation
+  settingStore.dictation = settingStore.dictation === DictationMode.None ? DictationMode.Full : DictationMode.None
 }
 
 function openSetting() {

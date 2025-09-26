@@ -18,6 +18,7 @@ declare module 'vue' {
     Close: typeof import('./src/components/icon/Close.vue')['default']
     CollectNotice: typeof import('./src/components/CollectNotice.vue')['default']
     Dialog: typeof import('./src/components/dialog/Dialog.vue')['default']
+    DictationSetting: typeof import('./src/components/toolbar/DictationSetting.vue')['default']
     DictDiglog: typeof import('./src/components/dialog/DictDiglog.vue')['default']
     DictGroup: typeof import('./src/components/list/DictGroup.vue')['default']
     DictItem: typeof import('./src/components/list/DictItem.vue')['default']

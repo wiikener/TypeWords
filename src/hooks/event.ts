@@ -61,16 +61,16 @@ export function useStartKeyboardEventListener() {
     
     // 检测是否为 Edge 浏览器
     const isEdge = /Edg\//.test(navigator.userAgent)
-    console.log('🔍 Browser detection - Is Edge:', isEdge, 'UserAgent:', navigator.userAgent)
+    // console.log('🔍 Browser detection - Is Edge:', isEdge, 'UserAgent:', navigator.userAgent)
 
     // Edge 浏览器兼容性修复 - 使用 keypress 事件作为主要监听器
     if (isEdge) {
         useEventListener('keypress', (e: KeyboardEvent) => {
-            console.log('Edge keypress:', {key: e.key, keyCode: e.keyCode, code: e.code})
+            // console.log('Edge keypress:', {key: e.key, keyCode: e.keyCode, code: e.code})
             if (!runtimeStore.disableEventListener && e.key.length === 1) {
                 // 对于字母按键，直接触发输入事件
                 if (/^[a-zA-Z]$/.test(e.key)) {
-                    console.log('Edge: Letter key detected, triggering onTyping')
+                    // console.log('Edge: Letter key detected, triggering onTyping')
                     emitter.emit(EventKey.onTyping, e)
                     return
                 }
@@ -88,7 +88,7 @@ export function useStartKeyboardEventListener() {
     })
 
     useEventListener('keydown', (e: KeyboardEvent) => {
-        console.log('Global keydown:', {key: e.key, keyCode: e.keyCode, code: e.code, disableEventListener: runtimeStore.disableEventListener})
+        // console.log('Global keydown:', {key: e.key, keyCode: e.keyCode, code: e.code, disableEventListener: runtimeStore.disableEventListener})
         if (!runtimeStore.disableEventListener) {
             e.preventDefault()
             let shortcutKey = getShortcutKey(e)

@@ -2,7 +2,7 @@
 import { onMounted, onUnmounted, watch } from "vue"
 import { $computed, $ref } from "vue/macros"
 import { useBaseStore } from "@/stores/base.ts"
-import { DefaultDisplayStatistics, DictType, ShortcutKey, Sort, Word } from "../../../types.ts";
+import { DefaultDisplayStatistics, DictType, ShortcutKey, Sort, Word, DictationMode } from "../../../types.ts";
 import { emitter, EventKey } from "@/utils/eventBus.ts"
 import { cloneDeep, reverse, shuffle } from "lodash-es"
 import { usePracticeStore } from "@/stores/practice.ts"
@@ -256,7 +256,7 @@ onUnmounted(() => {
         <Tooltip
             :title="`下一个(快捷键：${settingStore.shortcutKeyMap[ShortcutKey.Next]})`"
         >
-          <div class="word" :class="settingStore.dictation && 'text-shadow'">{{ nextWord.name }}</div>
+          <div class="word" :class="settingStore.dictation !== DictationMode.None && 'text-shadow'">{{ nextWord.name }}</div>
         </Tooltip>
         <Icon class="arrow" icon="bi:arrow-right" width="22"/>
       </div>
@@ -326,7 +326,7 @@ onUnmounted(() => {
                   v-if="data.words.length"
                   :is-active="active"
                   :static="false"
-                  :show-word="!settingStore.dictation"
+                  :show-word="settingStore.dictation === DictationMode.None"
                   :show-translate="settingStore.translate"
                   :list="data.words"
                   :activeIndex="data.index"

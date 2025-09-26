@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { DefaultWord, ShortcutKey, Word } from "@/types.ts";
+import { DefaultWord, ShortcutKey, Word, DictationMode, getDictationDisplayText } from "@/types.ts";
 import VolumeIcon from "@/components/icon/VolumeIcon.vue";
 import { $computed, $ref } from "vue/macros";
 import { useBaseStore } from "@/stores/base.ts";
@@ -80,25 +80,14 @@ function repeat() {
 }
 
 async function onTyping(e: KeyboardEvent) {
-  console.log('onTyping called with:', {
-    key: e.key,
-    code: e.code,
-    waitNext: waitNext,
-    inputLock: inputLock
-  })
-  
   if (waitNext) {
-    console.log('Waiting for next, only space allowed')
     if (e.code === 'Space') {
       emit('next')
       waitNext = false
     }
     return
   }
-  if (inputLock) {
-    console.log('Input locked, returning')
-    return
-  }
+  if (inputLock) return
   inputLock = true
   let letter = e.key
   let isTypingRight = false
@@ -111,28 +100,16 @@ async function onTyping(e: KeyboardEvent) {
     isWordRight = (input + letter) === props.word.name
   }
   
-  console.log('Typing Debug:', {
-    letter: letter,
-    wordName: props.word.name,
-    inputLength: input.length,
-    expectedChar: props.word.name[input.length],
-    currentInput: input,
-    isTypingRight: isTypingRight,
-    ignoreCase: settingStore.ignoreCase
-  })
-  
   if (isTypingRight) {
     input += letter
     wrong = ''
     playKeyboardAudio()
-    console.log('Correct input, new input:', input)
   } else {
     emit('wrong')
     wrong = letter
     playKeyboardAudio()
     playBeep()
     volumeIconRef?.play()
-    console.log('Wrong input, wrong letter:', wrong)
     setTimeout(() => {
       wrong = ''
     }, 500)
@@ -165,11 +142,8 @@ async function onTyping(e: KeyboardEvent) {
     }
   } else {
     // 关键修复：无论输入正确还是错误，都要解除锁定
-    console.log('Unlocking input, isWordRight:', isWordRight)
     inputLock = false
   }
-  
-  console.log('onTyping finished, inputLock:', inputLock)
 }
 
 function del() {
@@ -231,11 +205,11 @@ defineExpose({del, showWord, hideWord, play})
       >
         <span class="input" v-if="input">{{ input }}</span>
         <span class="wrong" v-if="wrong">{{ wrong }}</span>
-        <template v-if="settingStore.dictation">
+        <template v-if="settingStore.dictation !== DictationMode.None">
           <span class="letter" v-if="!showFullWord"
-                @mouseenter="showWord">{{
-              displayWord.split('').map(() => settingStore.dictationShowWordLength ? '_' : '&nbsp;').join('')
-            }}</span>
+                @mouseenter="showWord"
+                v-html="getDictationDisplayText(displayWord, settingStore.dictation, settingStore.dictationShowWordLength)">
+          </span>
           <span class="letter" v-else @mouseleave="hideWord">{{ displayWord }}</span>
         </template>
         <span class="letter" v-else>{{ displayWord }}</span>

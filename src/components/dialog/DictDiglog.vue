@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {useBaseStore} from "@/stores/base.ts"
 import {onMounted, watch} from "vue"
-import {DefaultDict, Dict, DictResource, DictType, Sort, Word} from "@/types.ts"
+import {DefaultDict, Dict, DictResource, DictType, Sort, Word, DictationMode} from "@/types.ts"
 import {chunk, cloneDeep, reverse, shuffle} from "lodash-es";
 import {$computed, $ref} from "vue/macros";
 import BaseButton from "@/components/BaseButton.vue";
@@ -307,8 +307,10 @@ function handleChangeArticleChapterIndex(val: any) {
                     <div class="label">学习模式</div>
                     <div class="option">
                       <el-radio-group v-model="settingStore.dictation">
-                        <el-radio :label="false" size="large">再认</el-radio>
-                        <el-radio :label="true" size="large">拼写</el-radio>
+                        <el-radio :label="DictationMode.None" size="large">再认</el-radio>
+                        <el-radio :label="DictationMode.Full" size="large">拼写</el-radio>
+                        <el-radio :label="DictationMode.VowelsOnly" size="large">隐藏元音</el-radio>
+                        <el-radio :label="DictationMode.ConsonantsOnly" size="large">隐藏辅音</el-radio>
                       </el-radio-group>
                     </div>
                   </div>

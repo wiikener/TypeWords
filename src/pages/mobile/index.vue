@@ -4,7 +4,7 @@ import {useBaseStore} from "@/stores/base.ts";
 import {useRuntimeStore} from "@/stores/runtime.ts";
 import {useSettingStore} from "@/stores/setting.ts";
 import {$computed, $ref} from "vue/macros";
-import {ShortcutKey, Sort, Word} from "@/types.ts";
+import {ShortcutKey, Sort, Word, DictationMode} from "@/types.ts";
 import {cloneDeep} from "lodash-es";
 import {emitter, EventKey} from "@/utils/eventBus.ts";
 import {syncMyDictList, useWordOptions} from "@/hooks/dict.ts";
@@ -175,7 +175,7 @@ let showPanel = $ref(false)
                     v-if="wordData.words.length"
                     :is-active="active"
                     :static="true"
-                    :show-word="!settingStore.dictation"
+                    :show-word="settingStore.dictation === DictationMode.None"
                     :show-translate="settingStore.translate"
                     :list="wordData.words"
                     :activeIndex="wordData.index"

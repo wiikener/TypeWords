@@ -199,6 +199,59 @@ export enum TranslateEngine {
   Baidu = 0,
 }
 
+export enum DictationMode {
+  None = 0,        // 不默写，显示所有字母
+  Full = 1,        // 全部隐藏（当前模式）
+  VowelsOnly = 2,  // 只隐藏元音字母
+  ConsonantsOnly = 3 // 只隐藏辅音字母
+}
+
+// 元音字母集合（包括大小写）
+export const VOWELS = new Set(['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'])
+
+// 判断是否为元音字母
+export function isVowel(char: string): boolean {
+  return VOWELS.has(char)
+}
+
+// 判断是否为辅音字母（只判断英文字母）
+export function isConsonant(char: string): boolean {
+  return /[a-zA-Z]/.test(char) && !isVowel(char)
+}
+
+// 根据默写模式生成显示文本
+export function getDictationDisplayText(
+  originalText: string, 
+  dictationMode: DictationMode, 
+  showWordLength: boolean = true
+): string {
+  if (dictationMode === DictationMode.None) {
+    return originalText
+  }
+  
+  return originalText.split('').map(char => {
+    let shouldHide = false
+    
+    switch (dictationMode) {
+      case DictationMode.Full:
+        shouldHide = /[a-zA-Z]/.test(char) // 隐藏所有字母
+        break
+      case DictationMode.VowelsOnly:
+        shouldHide = isVowel(char) // 只隐藏元音
+        break
+      case DictationMode.ConsonantsOnly:
+        shouldHide = isConsonant(char) // 只隐藏辅音
+        break
+    }
+    
+    if (shouldHide) {
+      return showWordLength ? '_' : '&nbsp;'
+    } else {
+      return char
+    }
+  }).join('')
+}
+
 export const languageCategoryOptions = [
   {id: 'article', name: '文章', flag: bookFlag},
   {id: 'en', name: '英语', flag: enFlag},
