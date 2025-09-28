@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {computed, nextTick, onMounted, onUnmounted, watch} from "vue"
 import {$computed, $ref} from "vue/macros";
-import {Article, ArticleWord, DefaultArticle, ShortcutKey, ShortcutKeyMap, Word, DictationMode} from "@/types.ts";
+import {Article, ArticleWord, DefaultArticle, ShortcutKey, ShortcutKeyMap, Word, DictationMode, getDictationDisplayText} from "@/types.ts";
 import {useBaseStore} from "@/stores/base.ts";
 import {usePracticeStore} from "@/stores/practice.ts";
 import {useSettingStore} from "@/stores/setting.ts";
@@ -74,12 +74,16 @@ watch(() => props.article, () => {
   sentenceIndex = props.sentenceIndex
   wordIndex = props.wordIndex
   stringIndex = props.stringIndex
-  typeArticleRef?.scrollTo({top: 0, behavior: "smooth"})
+  // 移除自动滚动到顶部，保持用户当前位置
+  // typeArticleRef?.scrollTo({top: 0, behavior: "smooth"})
   calcTranslateLocation()
 }, {immediate: true})
 
 watch(() => settingStore.dictation, () => {
-  calcTranslateLocation()
+  // 只有在翻译开启时才需要重新计算位置
+  if (settingStore.translate) {
+    calcTranslateLocation()
+  }
 })
 
 function nextSentence() {
@@ -110,9 +114,10 @@ function nextSentence() {
       emit('over')
     }
   } else {
-    if (settingStore.dictation !== DictationMode.None) {
-      calcTranslateLocation()
-    }
+    // 移除频繁的位置重计算，只在必要时计算
+    // if (settingStore.dictation !== DictationMode.None) {
+    //   calcTranslateLocation()
+    // }
     playWordAudio(currentSection[sentenceIndex].text)
   }
 }
@@ -144,9 +149,10 @@ function onTyping(e: KeyboardEvent) {
           console.log('打完了')
         }
       } else {
-        if (settingStore.dictation !== DictationMode.None) {
-          calcTranslateLocation()
-        }
+        // 移除频繁的位置重计算，只在必要时计算
+        // if (settingStore.dictation !== DictationMode.None) {
+        //   calcTranslateLocation()
+        // }
         playWordAudio(currentSection[sentenceIndex].text)
       }
     }
@@ -209,26 +215,41 @@ function onTyping(e: KeyboardEvent) {
 }
 
 function calcTranslateLocation() {
+  // 只有在翻译功能开启时才执行位置计算
+  if (!settingStore.translate) {
+    return
+  }
+  
   nextTick(() => {
     setTimeout(() => {
-      let articleRect = articleWrapperRef.getBoundingClientRect()
-      props.article.sections.map((v, i) => {
-        v.map((w, j) => {
-          let location = i + '-' + j
-          let wordClassName = `.word${location}`
-          let word = document.querySelector(wordClassName)
-          let wordRect = word.getBoundingClientRect()
-          let translateClassName = `.translate${location}`
-          let translate: HTMLDivElement = document.querySelector(translateClassName)
+      if (!articleWrapperRef) return
+      
+      try {
+        let articleRect = articleWrapperRef.getBoundingClientRect()
+        props.article.sections.map((v, i) => {
+          v.map((w, j) => {
+            let location = i + '-' + j
+            let wordClassName = `.word${location}`
+            let word = document.querySelector(wordClassName)
+            let translateClassName = `.translate${location}`
+            let translate: HTMLDivElement = document.querySelector(translateClassName)
 
-          translate.style.opacity = '1'
-          translate.style.top = wordRect.top - articleRect.top - 22 + 'px'
-          // @ts-ignore
-          translate.firstChild.style.width = wordRect.left - articleRect.left + 'px'
-          // console.log(word, wordRect.left - articleRect.left)
-          // console.log('word-wordRect', wordRect)
+            // 确保元素存在才进行操作
+            if (word && translate) {
+              let wordRect = word.getBoundingClientRect()
+              translate.style.opacity = '1'
+              translate.style.top = wordRect.top - articleRect.top - 22 + 'px'
+              // @ts-ignore
+              if (translate.firstChild) {
+                translate.firstChild.style.width = wordRect.left - articleRect.left + 'px'
+              }
+            }
+          })
         })
-      })
+      } catch (error) {
+        // 忽略计算错误，避免影响用户体验
+        console.warn('翻译位置计算失败:', error)
+      }
     }, 300)
   })
 }
@@ -272,8 +293,8 @@ function currentWordInput(word: ArticleWord, i: number, i2: number,) {
     return str
   }
 
-  if (settingStore.dictation) {
-    return '_'
+  if (settingStore.dictation !== DictationMode.None) {
+    return getDictationDisplayText(str, settingStore.dictation, settingStore.dictationShowWordLength)
   }
   return str
 }
@@ -284,8 +305,8 @@ function currentWordEnd(word: ArticleWord, i: number, i2: number,) {
     return str
   }
 
-  if (settingStore.dictation) {
-    return str.split('').map(v => '_').join('')
+  if (settingStore.dictation !== DictationMode.None) {
+    return getDictationDisplayText(str, settingStore.dictation, settingStore.dictationShowWordLength)
   }
   return str
 }
@@ -304,7 +325,7 @@ function otherWord(word: ArticleWord, i: number, i2: number, i3: number) {
   if (sectionIndex * 10000 + sentenceIndex * 100 + wordIndex < i * 10000 + i2 * 100 + i3
       && settingStore.dictation !== DictationMode.None
   ) {
-    return str.split('').map(v => '_').join('')
+    return getDictationDisplayText(str, settingStore.dictation, settingStore.dictationShowWordLength)
   }
   return str
 }
@@ -495,20 +516,30 @@ $article-width: 1000px;
     word-wrap: break-word;
     white-space: pre-wrap;
     padding-top: 20rem;
+    // 确保行高固定，防止布局跳动
+    min-height: 100vh;
+    overflow-x: hidden;
 
     .section {
       font-family: var(--word-font-family);
       margin-bottom: var(--space);
+      // 确保每个段落有最小高度，防止布局跳动
+      min-height: 3em;
 
       .sentence {
-        transition: all .3s;
+        // 移除过渡动画，防止布局跳动
+        // transition: all .3s;
+        display: inline;
+        // 确保句子行高一致
+        line-height: inherit;
 
         &:first-child {
           padding-left: 50rem;
         }
 
         &.dictation {
-          letter-spacing: 3rem;
+          // 减少字母间距，避免引起换行
+          letter-spacing: 1rem;
         }
       }
 

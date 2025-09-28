@@ -1,0 +1,46 @@
+[
+  {
+    "title": "The Little Red Hen",
+    "titleTranslate": "小红母鸡",
+    "text": "Once upon a time, there was a little red hen. She lived on a farm with a lazy cat, a sleepy dog, and a noisy duck. One day, the little red hen found some wheat seeds. She asked her friends, 'Who will help me plant the wheat?' The cat said, 'Not I.' The dog said, 'Not I.' The duck said, 'Not I.' So the little red hen planted the wheat by herself. When the wheat grew tall, she asked, 'Who will help me cut the wheat?' Again, no one wanted to help. The little red hen did all the work alone. Finally, she baked delicious bread. When the smell filled the air, all the animals came running. 'Who will help me eat the bread?' asked the hen. Everyone said, 'I will!' But the little red hen said, 'No, I will eat it myself because I did all the work.'",
+    "textCustomTranslate": "从前，有一只小红母鸡。\n她和一只懒猫、一只瞌睡狗和一只吵闹的鸭子住在农场里。\n一天，小红母鸡发现了一些麦种。\n她问朋友们：'谁来帮我种麦子？'\n猫说：'我不愿意。'\n狗说：'我不愿意。'\n鸭子说：'我不愿意。'\n所以小红母鸡自己种了麦子。\n当麦子长高时，她问：'谁来帮我割麦子？'\n又一次，没人愿意帮忙。\n小红母鸡独自做了所有的工作。\n最后，她烤了美味的面包。\n当香味充满空气时，所有动物都跑来了。\n'谁来帮我吃面包？'母鸡问道。\n每个人都说：'我愿意！'\n但小红母鸡说：'不，我要自己吃，因为我做了所有的工作。'",
+    "textNetworkTranslate": "",
+    "newWords": [],
+    "textCustomTranslateIsFormat": true,
+    "useTranslateType": "custom",
+    "id": "SimpleStory01"
+  },
+  {
+    "title": "The Three Little Pigs",
+    "titleTranslate": "三只小猪",
+    "text": "Three little pigs left home to build their own houses. The first pig was lazy. He built his house with straw. The second pig built his house with sticks. The third pig worked hard. He built his house with bricks. One day, a big bad wolf came to the first pig's house. 'Little pig, little pig, let me come in!' he said. 'No, no, no!' said the pig. 'Then I'll huff and I'll puff and I'll blow your house in!' The wolf blew down the straw house. The first pig ran to his brother's stick house. The wolf came there too and blew it down. Both pigs ran to the brick house. The wolf tried to blow it down, but he could not. The brick house was too strong. The three little pigs were safe inside.",
+    "textCustomTranslate": "三只小猪离开家去建造自己的房子。\n第一只猪很懒。\n他用稻草建了房子。\n第二只猪用木棍建了房子。\n第三只猪工作很努力。\n他用砖头建了房子。\n一天，一只大坏狼来到第一只猪的房子。\n'小猪，小猪，让我进来！'他说。\n'不，不，不！'猪说。\n'那我就吹气，我就吹气，我就把你的房子吹倒！'\n狼把稻草房子吹倒了。\n第一只猪跑到他兄弟的木棍房子。\n狼也来了那里并把它吹倒了。\n两只猪都跑到砖房子。\n狼试图把它吹倒，但他做不到。\n砖房子太坚固了。\n三只小猪在里面安全了。",
+    "textNetworkTranslate": "",
+    "newWords": [],
+    "textCustomTranslateIsFormat": true,
+    "useTranslateType": "custom",
+    "id": "SimpleStory02"
+  },
+  {
+    "title": "The Tortoise and the Hare",
+    "titleTranslate": "乌龟和兔子",
+    "text": "A tortoise and a hare decided to have a race. The hare was very fast. The tortoise was very slow. 'I will win easily,' laughed the hare. The race began. The hare ran very quickly and soon was far ahead. He looked back and saw the tortoise moving slowly. 'I have plenty of time,' thought the hare. 'I can take a nap.' So the hare lay down under a tree and fell asleep. Meanwhile, the tortoise kept walking steadily. Step by step, he passed the sleeping hare. When the hare woke up, he saw the tortoise near the finish line. The hare ran as fast as he could, but it was too late. The tortoise won the race! The moral of the story is: slow and steady wins the race.",
+    "textCustomTranslate": "一只乌龟和一只兔子决定赛跑。\n兔子跑得很快。\n乌龟爬得很慢。\n'我会轻松获胜，'兔子笑道。\n比赛开始了。\n兔子跑得很快，很快就遥遥领先。\n他回头看见乌龟慢慢地移动。\n'我有充足的时间，'兔子想。\n'我可以小睡一会。'\n所以兔子躺在树下睡着了。\n与此同时，乌龟坚持稳步前行。\n一步一步，他超过了睡觉的兔子。\n当兔子醒来时，他看见乌龟接近终点线。\n兔子尽可能快地跑，但已经太晚了。\n乌龟赢得了比赛！\n这个故事的寓意是：缓慢而稳定能赢得比赛。",
+    "textNetworkTranslate": "",
+    "newWords": [],
+    "textCustomTranslateIsFormat": true,
+    "useTranslateType": "custom",
+    "id": "SimpleStory03"
+  },
+  {
+    "title": "The Boy Who Cried Wolf",
+    "titleTranslate": "说谎的牧童",
+    "text": "A young shepherd boy watched sheep on a hill near his village. He was bored and wanted some excitement. So he cried out, 'Wolf! Wolf! A wolf is eating the sheep!' The villagers heard him and came running with sticks and stones. But there was no wolf. The boy laughed. 'I was just joking!' he said. The villagers were angry and went back to work. A few days later, the boy cried 'Wolf!' again. Again the villagers came running, and again there was no wolf. This time they were very angry. Then one day, a real wolf came and attacked the sheep. The boy cried 'Wolf! Wolf!' as loudly as he could. But this time, no one came to help. The villagers thought he was lying again. The wolf ate many sheep. The boy learned that no one believes a liar, even when he tells the truth.",
+    "textCustomTranslate": "一个年轻的牧童在他村子附近的山上看羊。\n他很无聊，想要一些刺激。\n所以他大喊：'狼！狼！狼在吃羊！'\n村民们听到了他的声音，拿着棍子和石头跑来。\n但是没有狼。\n男孩笑了。\n'我只是在开玩笑！'他说。\n村民们很生气，回去工作了。\n几天后，男孩又喊'狼！'\n村民们又跑来，又没有狼。\n这次他们非常生气。\n然后有一天，一只真正的狼来了并攻击了羊。\n男孩尽可能大声地喊'狼！狼！'\n但这次，没有人来帮忙。\n村民们以为他又在撒谎。\n狼吃了很多羊。\n男孩学到了没有人相信说谎者，即使他说真话时也是如此。",
+    "textNetworkTranslate": "",
+    "newWords": [],
+    "textCustomTranslateIsFormat": true,
+    "useTranslateType": "custom",
+    "id": "SimpleStory04"
+  }
+]

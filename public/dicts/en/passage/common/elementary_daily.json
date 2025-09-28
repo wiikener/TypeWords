@@ -1,0 +1,42 @@
+[
+  {
+    "id": "elem_daily_001",
+    "title": "My School Day",
+    "titleTranslate": "我的校园生活",
+    "level": "elementary",
+    "category": "小学英语",
+    "subcategory": "daily_life",
+    "text": "My name is Emma. I want to tell you about my school day. I wake up at seven o'clock every morning. First, I brush my teeth and wash my face. Then I eat breakfast with my family. I usually have cereal and orange juice. At eight o'clock, I walk to school with my friends. My school is not far from my house. Our first class starts at nine o'clock. We have math, English, science, and art classes. My favorite subject is art because I love to draw and paint. At twelve o'clock, we have lunch in the cafeteria. I like to eat sandwiches and drink milk. After lunch, we have more classes. School ends at three o'clock. Then I go home and do my homework. In the evening, I help my mom cook dinner. We eat together as a family. After dinner, I read books or watch TV. I go to bed at nine o'clock. I love my school and my friends!",
+    "translation": "我的名字是艾玛。我想告诉你我的校园生活。我每天早上七点钟起床。首先，我刷牙洗脸。然后我和家人一起吃早餐。我通常吃麦片粥喝橙汁。八点钟，我和朋友们一起走路上学。我的学校离我家不远。我们第一堂课九点开始。我们有数学、英语、科学和美术课。我最喜欢的科目是美术，因为我喜欢画画和涂颜色。十二点钟，我们在食堂吃午餐。我喜欢吃三明治喝牛奶。午餐后，我们还有更多的课。学校三点钟结束。然后我回家做作业。晚上，我帮妈妈做晚餐。我们一家人一起吃饭。晚餐后，我读书或看电视。我九点钟睡觉。我爱我的学校和我的朋友们！",
+    "vocabulary": [
+      {"name": "brush", "trans": ["刷"], "usphone": "", "ukphone": ""},
+      {"name": "cereal", "trans": ["麦片"], "usphone": "", "ukphone": ""},
+      {"name": "cafeteria", "trans": ["食堂"], "usphone": "", "ukphone": ""},
+      {"name": "sandwich", "trans": ["三明治"], "usphone": "", "ukphone": ""},
+      {"name": "homework", "trans": ["家庭作业"], "usphone": "", "ukphone": ""}
+    ],
+    "readingTime": 3,
+    "wordCount": 201,
+    "difficulty": 2
+  },
+  {
+    "id": "elem_daily_002",
+    "title": "At the Zoo",
+    "titleTranslate": "在动物园",
+    "level": "elementary",
+    "category": "小学英语",
+    "subcategory": "daily_life",
+    "text": "Last Saturday, my family went to the zoo. It was a sunny day, perfect for visiting animals. We bought tickets at the entrance and got a map of the zoo. First, we visited the monkey house. The monkeys were very funny! They were jumping from tree to tree and making loud noises. Some monkeys were eating bananas. Next, we saw the elephants. They were so big and had long trunks. One elephant was taking a bath with water. We also saw lions sleeping in the shade. They looked very peaceful. The giraffes were my favorite animals. They were so tall! Their necks were longer than my whole body. We fed them leaves through the fence. At the bird house, we saw colorful parrots, beautiful peacocks, and tiny hummingbirds. Before leaving, we visited the gift shop. I bought a stuffed elephant to remember our fun day. We had ice cream and took many photos. It was the best day ever!",
+    "translation": "上个星期六，我们全家去了动物园。那是一个阳光明媚的日子，非常适合参观动物。我们在入口处买了票，拿到了动物园的地图。首先，我们参观了猴子馆。猴子们非常有趣！它们在树间跳来跳去，发出很大的声音。一些猴子在吃香蕉。接下来，我们看到了大象。它们非常大，有长长的鼻子。有一只大象在用水洗澡。我们还看到了狮子在阴凉处睡觉。它们看起来很安详。长颈鹿是我最喜欢的动物。它们太高了！它们的脖子比我整个身体都长。我们透过栅栏给它们喂树叶。在鸟屋里，我们看到了彩色的鹦鹉、美丽的孔雀和小小的蜂鸟。离开前，我们参观了礼品店。我买了一个毛绒大象来纪念我们快乐的一天。我们吃了冰淇淋，拍了很多照片。这是最棒的一天！",
+    "vocabulary": [
+      {"name": "entrance", "trans": ["入口"], "usphone": "", "ukphone": ""},
+      {"name": "trunk", "trans": ["象鼻"], "usphone": "", "ukphone": ""},
+      {"name": "giraffe", "trans": ["长颈鹿"], "usphone": "", "ukphone": ""},
+      {"name": "peacock", "trans": ["孔雀"], "usphone": "", "ukphone": ""},
+      {"name": "stuffed", "trans": ["毛绒的"], "usphone": "", "ukphone": ""}
+    ],
+    "readingTime": 4,
+    "wordCount": 226,
+    "difficulty": 3
+  }
+]

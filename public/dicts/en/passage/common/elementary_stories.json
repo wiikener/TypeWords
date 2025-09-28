@@ -1,0 +1,62 @@
+[
+  {
+    "id": "elem_story_001",
+    "title": "The Little Red Hen",
+    "titleTranslate": "小红母鸡",
+    "level": "elementary",
+    "category": "小学英语",
+    "subcategory": "stories",
+    "text": "Once upon a time, there was a little red hen who lived on a farm. She found some grains of wheat. 'Who will help me plant this wheat?' she asked. 'Not I,' said the dog. 'Not I,' said the cat. 'Not I,' said the pig. 'Then I will do it myself,' said the little red hen. And she did. She planted the wheat and took care of it every day. When the wheat was ready, she asked again, 'Who will help me cut the wheat?' But again, no one wanted to help. So the little red hen cut the wheat herself. Then she made flour from the wheat and baked delicious bread. When the bread was ready, all the animals wanted to eat it. But the little red hen said, 'No! I did all the work myself, so I will eat the bread myself.' And she did.",
+    "translation": "从前，有一只小红母鸡住在农场里。她发现了一些麦粒。'谁愿意帮我种这些麦子？'她问道。'我不愿意，'狗说。'我不愿意，'猫说。'我不愿意，'猪说。'那我就自己来做，'小红母鸡说。她种下了麦子，每天都精心照料。麦子成熟了，她又问：'谁愿意帮我割麦子？'但是，仍然没有人愿意帮忙。所以小红母鸡自己割了麦子。然后她用麦子磨成面粉，烤出了香甜的面包。当面包烤好时，所有的动物都想吃。但小红母鸡说：'不行！我自己做了所有的工作，所以我要自己吃面包。'她就这样做了。",
+    "vocabulary": [
+      {"name": "hen", "trans": ["母鸡"], "usphone": "", "ukphone": ""},
+      {"name": "wheat", "trans": ["小麦"], "usphone": "", "ukphone": ""},
+      {"name": "plant", "trans": ["种植"], "usphone": "", "ukphone": ""},
+      {"name": "flour", "trans": ["面粉"], "usphone": "", "ukphone": ""},
+      {"name": "bread", "trans": ["面包"], "usphone": "", "ukphone": ""}
+    ],
+    "readingTime": 3,
+    "wordCount": 198,
+    "difficulty": 2
+  },
+  {
+    "id": "elem_story_002",
+    "title": "The Three Little Pigs",
+    "titleTranslate": "三只小猪",
+    "level": "elementary",
+    "category": "小学英语",
+    "subcategory": "stories",
+    "text": "Once there were three little pigs. They left home to build their own houses. The first pig built his house with straw. It was quick and easy. The second pig built his house with sticks. It was a bit stronger than straw. The third pig worked hard and built his house with bricks. One day, a big bad wolf came. He went to the first pig's house and said, 'Little pig, little pig, let me come in!' 'No, no, no!' said the pig. 'Then I'll huff and I'll puff and I'll blow your house in!' The wolf blew down the straw house easily. The first pig ran to his brother's stick house. But the wolf blew down the stick house too. Both pigs ran to the brick house. The wolf tried to blow it down, but he couldn't. The brick house was too strong. The three little pigs were safe.",
+    "translation": "从前有三只小猪。他们离开家去建造自己的房子。第一只猪用稻草建房子。这既快又容易。第二只猪用木棍建房子。这比稻草稍微结实一些。第三只猪努力工作，用砖块建房子。有一天，一只大坏狼来了。他走到第一只猪的房子前说：'小猪，小猪，让我进来！''不，不，不！'小猪说。'那我就吹呀吹呀，把你的房子吹倒！'狼轻易地吹倒了稻草房子。第一只猪跑到他兄弟的木棍房子里。但是狼也把木棍房子吹倒了。两只猪都跑到了砖房子里。狼试图吹倒它，但他做不到。砖房子太结实了。三只小猪安全了。",
+    "vocabulary": [
+      {"name": "straw", "trans": ["稻草"], "usphone": "", "ukphone": ""},
+      {"name": "sticks", "trans": ["木棍"], "usphone": "", "ukphone": ""},
+      {"name": "bricks", "trans": ["砖块"], "usphone": "", "ukphone": ""},
+      {"name": "wolf", "trans": ["狼"], "usphone": "", "ukphone": ""},
+      {"name": "strong", "trans": ["强壮的，结实的"], "usphone": "", "ukphone": ""}
+    ],
+    "readingTime": 3,
+    "wordCount": 187,
+    "difficulty": 2
+  },
+  {
+    "id": "elem_story_003",
+    "title": "Goldilocks and the Three Bears",
+    "titleTranslate": "金发姑娘和三只熊",
+    "level": "elementary",
+    "category": "小学英语",
+    "subcategory": "stories",
+    "text": "Once upon a time, there was a little girl named Goldilocks. She had beautiful golden hair. One day, she was walking in the forest when she saw a pretty house. She knocked on the door, but no one answered. So she went inside. On the table, she saw three bowls of porridge. She was hungry, so she tasted the first bowl. 'This porridge is too hot!' she said. Then she tasted the second bowl. 'This porridge is too cold!' she said. Finally, she tasted the third bowl. 'This porridge is just right!' she said, and ate it all up. After eating, Goldilocks felt tired. She saw three chairs in the living room. She sat on the first chair. 'This chair is too hard!' she said. She sat on the second chair. 'This chair is too soft!' she said. Then she sat on the third chair. 'This chair is just right!' she said. But suddenly, the chair broke! Goldilocks was very tired, so she went upstairs and found three beds.",
+    "translation": "从前，有一个叫金发姑娘的小女孩。她有着美丽的金色头发。有一天，她在森林里散步时看到了一座漂亮的房子。她敲了敲门，但没有人应答。所以她走了进去。在桌子上，她看到了三碗粥。她饿了，所以她尝了第一碗。'这粥太热了！'她说。然后她尝了第二碗。'这粥太冷了！'她说。最后，她尝了第三碗。'这粥刚刚好！'她说着，把粥全部吃光了。吃完后，金发姑娘感到累了。她在客厅看到了三把椅子。她坐在第一把椅子上。'这椅子太硬了！'她说。她坐在第二把椅子上。'这椅子太软了！'她说。然后她坐在第三把椅子上。'这椅子刚刚好！'她说。但突然，椅子坏了！金发姑娘很累，所以她上楼发现了三张床。",
+    "vocabulary": [
+      {"name": "golden", "trans": ["金色的"], "usphone": "", "ukphone": ""},
+      {"name": "porridge", "trans": ["粥"], "usphone": "", "ukphone": ""},
+      {"name": "knocked", "trans": ["敲门"], "usphone": "", "ukphone": ""},
+      {"name": "hungry", "trans": ["饥饿的"], "usphone": "", "ukphone": ""},
+      {"name": "upstairs", "trans": ["楼上"], "usphone": "", "ukphone": ""}
+    ],
+    "readingTime": 4,
+    "wordCount": 243,
+    "difficulty": 3
+  }
+]
